@@ -1,0 +1,9 @@
+[
+  { "name": "Bob", "favorite_drink": "Espresso", "consistency_rate": 0.95 },
+  { "name": "Jim", "favorite_drink": "Latte", "consistency_rate": 0.1 },
+  { "name": "Alice", "favorite_drink": "Cappuccino", "consistency_rate": 0.8 },
+  { "name": "Jay", "favorite_drink": "Mocha", "consistency_rate": 0.4 },
+  { "name": "Steve", "favorite_drink": "Drip", "consistency_rate": 0.8 },
+  { "name": "Sarah", "favorite_drink": "Espresso", "consistency_rate": 0.92 },
+  { "name": "Michael", "favorite_drink": "Latte", "consistency_rate": 0.86 }
+]
