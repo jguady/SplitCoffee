@@ -1,13 +1,7 @@
 
 import json
-from types import SimpleNamespace
-from typing import List
-
-import pytest
 
 from splitcoffee.model.Menu import Menu
-from splitcoffee.model.MenuItem import MenuItem
-
 
 
 def test_load_menu(tmp_path, menu_data):

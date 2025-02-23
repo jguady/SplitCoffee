@@ -8,6 +8,7 @@ import typing
 from splitcoffee.model.Menu import Menu
 from splitcoffee.model.MenuItem import MenuItem
 from splitcoffee.model.Person import Person
+from splitcoffee.service.SplitCoffeeService import SplitCoffeeService
 
 
 class CoffeeShop:
@@ -16,11 +17,12 @@ class CoffeeShop:
     RESOURCES_PATH = pathlib.Path(__file__).parent / "resources"
     menu: Menu
     people: dict[str, Person]
-    order: typing.List[MenuItem] = []
+    order: dict[str, MenuItem] = {}
 
-    def __init__(self, menu_file_path : str =RESOURCES_PATH / "menu_items.json", person_file_path : str =RESOURCES_PATH / "people.json" ):
+    def __init__(self):
         logging.info(CoffeeShop.RESOURCES_PATH)
         self.menu = Menu()
+
 
     # loads the menu items from the menu_items.json
     def load_menu(self, menu_file_path):
@@ -28,10 +30,8 @@ class CoffeeShop:
         if os.path.isfile(file_path):
             logging.info(f" Menu File exists: Loading menu from {file_path}")
             with open(file_path, 'r') as menu:
-                # self.menu = json.load(menu, object_hook=lambda d: SimpleNamespace(**d))
                 menu_data = json.load(menu)
-                menu = Menu()
-                menu.from_list(menu_data)
+                menu = Menu().from_list(menu_data)
                 logging.debug(self.menu)
 
         else:
@@ -51,9 +51,11 @@ class CoffeeShop:
 
     #Loops through each of the people in the coffee shop and collects their order into a list called order
     def take_orders(self) -> None:
-        self.order : typing.List[*MenuItem] = []
+        self.order = {person.name: person.get_order(self.menu) for person in self.people.values()}
+        print(self.order)
 
-        for name, person in self.people.items():
-            self.order.append(person.get_order(self.menu))
+
+    def present_bill(self):
+        SplitCoffeeService.determine_payment_person(self.people, self.order)
 
 

@@ -42,12 +42,12 @@ def person_data() -> List:
         {"name": "Michael", "favorite_drink": "Latte", "consistency_rate": 0.85}
     ]
 @pytest.fixture
-def persons(tmp_path, person_data) -> List[Person]:
+def persons(tmp_path, person_data) -> dict[str,Person]:
 
     file_path = tmp_path / "person.json"
     file_path.write_text(json.dumps(person_data))
 
     with open(file_path, "r") as person_file:
         loaded_person = json.loads(person_file.read())
-    persons = [Person(data) for data in loaded_person]
+    persons = {data["name"]: Person(data) for data in loaded_person}
     return persons
