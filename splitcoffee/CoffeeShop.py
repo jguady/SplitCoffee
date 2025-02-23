@@ -4,8 +4,6 @@ import os.path
 import pathlib
 import json
 import typing
-from multiprocessing.managers import Array
-from types import SimpleNamespace
 
 from splitcoffee.model.Menu import Menu
 from splitcoffee.model.MenuItem import MenuItem
@@ -55,7 +53,7 @@ class CoffeeShop:
     def take_orders(self) -> None:
         self.order : typing.List[*MenuItem] = []
 
-        for person in self.people:
+        for name, person in self.people.items():
             self.order.append(person.get_order(self.menu))
 
 
