@@ -2,7 +2,7 @@
 
 A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 
-# Assumptions  
+## Assumptions  
 ### The following assumptions were made when creating the program  
  - The group decides that the fairest way to take turns paying based on an internal score.   
    - This score is made up of previous purchase history.
@@ -31,7 +31,7 @@ A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 - The people and menu files are properly formatted and contain at least one element fitting the model.
 
 
-# Running the Program  
+## Running the Program  
 
 The program was created and tested on windows. Pycharm was used to develop the program. 
 Windows can be a bit finnicky to get python programs to run but ideally it should be as easy as:
@@ -44,7 +44,7 @@ C:\...\splitcoffee-0.0.1> set PYTHONPATH=.
 ```
 
 
-# Interacting with the Program
+## Interacting with the Program
 
 There is a simple CLI that was made for the user to interact with. 
 In general there are the following top level commands:
@@ -61,19 +61,19 @@ You can stop the simulation by typing `s` and hitting `enter`.
 `q` here will also work but will exit the program entirely. 
 
   
-# Manipulate Data  
+## Manipulate Data  
   
-## Changing the People  
+### Changing the People  
 You can modify the json file of people before running the program to add/remove people or adjust their parameters  
 [people.json](splitcoffee/resources/people.json)  
 [https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/people.json  ](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/people.json#L1-L9)
   
-## Changing the Menu  
+### Changing the Menu  
 The menu items json can also be adjusted to modify prices or add/remove drinks.  
 [menu_items.json](splitcoffee/resources/menu_items.json)  
 [https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/menu_items.json](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/menu_items.json#L1-L7)
 
-# Tests  
+## Tests  
 Under the tests folder are all the unit tests written for the program.
 
 The `PYTHONPATH` also needs to be set here as well (see above)
@@ -90,9 +90,9 @@ Thankfully the coverage report has a filter function. Here is an image of the co
 
 ![CodeCov.png](images/CodeCov.png)
 
-# Github Actions  
+## Github Actions  
 
-under the `.github/workflows` directory there is a file [build.yml] which simply uses setuptools build a `whl` file and a `tar.gz` 
+Under the `.github/workflows` directory there is a file [build.yml] which simply uses setuptools build a `whl` file and a `tar.gz` 
 
 It them uploads the artifact to github.
 
