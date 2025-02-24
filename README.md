@@ -96,6 +96,6 @@ Thankfully the coverage report has a filter function. Here is an image of the co
 
 Under the `.github/workflows` directory there is a file [build.yml] which simply uses setuptools build a `whl` file and a `tar.gz` 
 
-It them uploads the artifact to github.
+It then uploads the artifact to github.
 
 
