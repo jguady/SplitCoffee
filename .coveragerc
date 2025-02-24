@@ -1,0 +1,17 @@
+[run]
+omit =
+    .venv/*
+    */pytest_plugin.py
+    resources/*
+    **/plugins/*
+    tests/*
+    .pycharm_helpers
+    *pycharm/_jb_pytest_runner.py
+
+[report]
+exclude_also =
+    .venv
+    **/plugins/*
+    tests/*
+    .pycharm_helpers
+    *pycharm/_jb_pytest_runner.py

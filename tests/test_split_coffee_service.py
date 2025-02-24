@@ -150,7 +150,7 @@ def test__update_state():
         "Amanda": items[1],
     }
 
-    service._apply_credits(orders)
+    service.apply_credits(orders)
 
     assert service.split_state["Bob"].debt == -13.50
     assert service.split_state["Amanda"].debt == 7.5
