@@ -13,4 +13,15 @@ dependencies = [
 splitcoffee = "splitcoffee:runner"
 
 [tool.setuptools.package-data]
-"splitcoffee" = ["resources/*.json"]
+"splitcoffee" = ["resources/*.json", ]
+
+[tool.setuptools.data-files]
+tests = ["tests/*.py"]
+
+# pyproject.toml
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]

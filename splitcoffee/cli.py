@@ -1,6 +1,7 @@
 import logging
 import os.path
 import sys
+from time import sleep
 
 from splitcoffee.CoffeeShop import CoffeeShop
 
@@ -51,9 +52,9 @@ def main(args, loglevel):
                 try:
                     coffeeshop.take_orders()
                     print("Please wait while we make the drinks and total the order")
-                    # for i in range(len(coffeeshop.order.items())):
-                    #     # sleep(3)
-                    #     print("Order's ready!!")
+                    for i in range(len(coffeeshop.order.items())):
+                        sleep(1)
+                        print("Order " + str(i) +  " ready!")
 
                     name, amount = coffeeshop.present_bill()
                     print(f"{name} was charged for {amount} dollars")

@@ -1,14 +1,9 @@
-import heapq
 import json
-import operator
-import random
-from ftplib import print_line
-from heapq import heappush, heappop
 
 import pytest
 
-from Person import Person
 from splitcoffee.CoffeeShop import CoffeeShop
+
 
 @pytest.fixture
 def loaded_coffee_shop(persons,menu):

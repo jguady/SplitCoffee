@@ -29,7 +29,7 @@ class CoffeeShop:
     def load_menu(self, menu_file_path):
         file_path = os.path.join(CoffeeShop.RESOURCES_PATH, menu_file_path)
         if os.path.isfile(file_path):
-            logging.info(f" Menu File exists: Loading menu from {file_path}")
+            logging.debug(f" Menu File exists: Loading menu from {file_path}")
             with open(file_path, 'r') as menu:
                 menu_data = json.load(menu)
                 self.menu = Menu()
@@ -43,7 +43,7 @@ class CoffeeShop:
     def load_people(self, people_file_path):
         file = os.path.join(CoffeeShop.RESOURCES_PATH, people_file_path)
         if os.path.isfile(file):
-            logging.info(f" People File exists: Loading people data from {file}")
+            logging.debug(f" People File exists: Loading people data from {file}")
             with open(file, 'r') as people:
                 people_data = json.load(people)
                 self.people = {person["name"]: Person(person) for person in people_data}
