@@ -38,6 +38,8 @@ class CoffeeShop:
 
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file_path)
+        if not self.menu.menu_items:
+            raise ValueError("Menu cannot be empty")
 
     # Loads the people data from people.json
     def load_people(self, people_file_path):
@@ -50,6 +52,8 @@ class CoffeeShop:
                 logging.debug(f"Loaded People: {self.people}")
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file)
+        if not self.people:
+            raise ValueError("People cannot be empty")
 
         self.split_service.initialize_state(list(self.people.keys()))
 
