@@ -1,10 +1,9 @@
 import logging
-from turtledemo.clock import current_day
 from typing import List
 
-from splitcoffee.model.SplitCoffeeState import SplitCoffeeState
 from splitcoffee.model.MenuItem import MenuItem
 from splitcoffee.model.Person import Person
+from splitcoffee.model.SplitCoffeeState import SplitCoffeeState
 
 
 class SplitCoffeeService:

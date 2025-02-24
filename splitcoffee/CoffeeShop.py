@@ -1,9 +1,8 @@
 import errno
+import json
 import logging
 import os.path
 import pathlib
-import json
-import typing
 
 from splitcoffee.model.Menu import Menu
 from splitcoffee.model.MenuItem import MenuItem

@@ -1,7 +1,7 @@
-import logging
 import argparse
-from splitcoffee.cli import main
+import logging
 
+from splitcoffee.cli import main
 
 if __name__ == "__main__":  # pragma: no cover
     # Create arg parser

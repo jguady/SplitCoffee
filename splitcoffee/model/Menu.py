@@ -1,8 +1,9 @@
 # import typing
-from idlelib.mainmenu import menudefs
 from typing import List
 
 from splitcoffee.model.MenuItem import MenuItem
+
+
 class Menu:
 
     menu_items: dict[str,MenuItem] = {}

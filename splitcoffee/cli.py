@@ -1,10 +1,8 @@
 import logging
 import os.path
 import sys
-from time import sleep
 
 from splitcoffee.CoffeeShop import CoffeeShop
-from splitcoffee.service.SplitCoffeeService import SplitCoffeeService
 
 
 def print_welcome():

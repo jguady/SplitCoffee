@@ -1,5 +1,5 @@
-import typing
 import random
+import typing
 
 from splitcoffee.model.Menu import Menu
 from splitcoffee.model.MenuItem import MenuItem

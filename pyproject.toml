@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "splitcoffee"
+version = "0.0.1"
+dependencies = [
+    "typing",
+    "pytest~=8.3.4",
+    'importlib-metadata; python_version<"3.13"',
+]

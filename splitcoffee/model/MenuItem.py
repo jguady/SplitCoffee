@@ -1,6 +1,3 @@
-import typing
-
-
 class MenuItem:
     name: str
     price: float
