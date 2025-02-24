@@ -12,6 +12,8 @@ dependencies = [
 [project.scripts]
 splitcoffee = "splitcoffee:runner"
 
+
+
 [tool.setuptools.package-data]
 "splitcoffee" = ["resources/*.json", ]
 

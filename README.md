@@ -85,12 +85,12 @@ If so the tests should be runnable with from the root project directory.
 pytest tests/
 ```
 
-![test_run.png](images/test_run.png)
+![test_run.png](test_run.png)
 
 There was a bug with Pycharm and Pytest including the test runners in the coverage files. Despite having a `.coveragerc` I was not able to exclude them completely.
 Thankfully the coverage report has a filter function. Here is an image of the coverage of the source files based on the tests.
 
-![CodeCov.png](images/CodeCov.png)
+![CodeCov.png](CodeCov.png)
 
 ## Github Actions  
 
