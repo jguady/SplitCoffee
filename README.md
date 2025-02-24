@@ -74,12 +74,12 @@ You can stop the simulation by typing `s` and hitting `enter`.
 ## Changing the People  
 You can modify the json file of people before running the program to add/remove people or adjust their parameters  
 [people.json](splitcoffee/resources/people.json)  
-https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/people.json  
+[https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/people.json  ](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/people.json#L1-L9)
   
 ## Changing the Menu  
 The menu items json can also be adjusted to modify prices or add/remove drinks.  
 [menu_items.json](splitcoffee/resources/menu_items.json)  
-https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/menu_items.json
+[https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/menu_items.json](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/menu_items.json#L1-L7)
 
 # Tests  
 Under the tests folder are all the unit tests written for the program.
