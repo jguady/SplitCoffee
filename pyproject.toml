@@ -6,7 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "splitcoffee"
 version = "0.0.1"
 dependencies = [
-    "typing",
     "pytest~=8.3.4",
     'importlib-metadata; python_version<"3.13"',
 ]
+[project.scripts]
+splitcoffee = "splitcoffee:runner"
+
+[tool.setuptools.package-data]
+"splitcoffee" = ["resources/*.json"]

@@ -8,10 +8,8 @@ from splitcoffee.model.SplitCoffeeState import SplitCoffeeState
 
 class SplitCoffeeService:
 
-    split_state: dict[str, SplitCoffeeState]
-    current_day_num: int = 0
-    def __init__(self):
-        pass
+    split_state: dict[str, SplitCoffeeState] = {}
+    current_day_num: int = 1
 
     # Determines who is next in line to pay
     def determine_payment_person(self, people: dict[str,Person], order : dict[str, MenuItem]) -> str:
@@ -22,11 +20,12 @@ class SplitCoffeeService:
 
         lowest_debt = max(sub_split_state, key=lambda key: sub_split_state.get(key).debt)
         max_many = {key for key, state_item in sub_split_state.items() if state_item.debt == sub_split_state[lowest_debt].debt}
+        logging.debug(f"Lowest debt : {lowest_debt}")
         logging.debug(f"Max Many: {max_many})")
 
         if len(max_many) > 1:
-            lowest_debt = min(sub_split_state, key=lambda key: sub_split_state[key].time_last_paid)
-            logging.debug(f"lowest debt: {lowest_debt}")
+            lowest_debt = min(max_many, key=lambda key: sub_split_state[key].time_last_paid)
+            logging.debug(f"lowest debt tiebreak: {lowest_debt}")
         return lowest_debt
 
     def charge_person(self, order_total: float, person_name: str):
@@ -39,7 +38,7 @@ class SplitCoffeeService:
         coffee_state.time_last_paid = self.current_day_num
         self.current_day_num += 1
         if self.current_day_num > 365:
-            self.current_day_num = 0
+            self.current_day_num = 1
 
     @classmethod
     def get_order_total(cls, order: dict[str, MenuItem]) -> float:

@@ -40,8 +40,6 @@ def main(args, loglevel):
 
         if user_input.lower().strip() == 'q':
             sys.exit(0)
-        if user_input.lower().strip() == 'd':
-            coffee = CoffeeShop()
         if user_input.lower().strip() == 'help':
             print_commands()
 

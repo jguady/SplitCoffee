@@ -1,4 +1,5 @@
 import heapq
+import json
 import operator
 import random
 from ftplib import print_line
@@ -6,19 +7,55 @@ from heapq import heappush, heappop
 
 import pytest
 
+from Person import Person
 from splitcoffee.CoffeeShop import CoffeeShop
-from splitcoffee.model.MenuItem import MenuItem
 
 @pytest.fixture
 def loaded_coffee_shop(persons,menu):
-    coffee_shop = CoffeeShop()
     coffee_shop = CoffeeShop()
     coffee_shop.__setattr__("people", persons)
     coffee_shop.__setattr__("menu", menu)
     return coffee_shop
 
+@pytest.fixture
+def file_loaded_coffee_shop(tmp_path, person_data, menu_data):
+    coffee_shop = CoffeeShop()
+    # load people
+    file_path = tmp_path / "people.json"
+    file_path.write_text(json.dumps(person_data))
+
+    coffee_shop.load_people(tmp_path / "people.json")
+    #load menu
+    file_path = tmp_path / "menu_items.json"
+    file_path.write_text(json.dumps(menu_data))
+
+    coffee_shop.load_menu(tmp_path / "menu_items.json")
+    return coffee_shop
+
 def test_coffee_shop():
     coffee_shop = CoffeeShop()
+    assert coffee_shop is not None
+
+
+def test_load_people(tmp_path, person_data):
+    coffee_shop = CoffeeShop()
+    file_path = tmp_path / "people.json"
+    file_path.write_text(json.dumps(person_data))
+
+    coffee_shop.load_people(tmp_path / "people.json")
+
+    for index, key in enumerate(coffee_shop.people.keys()):
+        assert key == person_data[index]["name"]
+
+def test_load_menu(tmp_path, menu_data):
+    coffee_shop = CoffeeShop()
+    file_path = tmp_path / "menu_items.json"
+    file_path.write_text(json.dumps(menu_data))
+
+    coffee_shop.load_menu(tmp_path / "menu_items.json")
+
+    for index, key in enumerate(coffee_shop.menu.menu_items.keys()):
+        assert key == menu_data[index]["name"]
 
 def test_coffee_shop_menu_file_not_found():
     with pytest.raises(FileNotFoundError) as FNF:
@@ -52,6 +89,22 @@ def test_take_orders(persons, menu):
     for person in persons.values():
         assert (person.favorite_drink == orders[person.name].name or person.ordered_random)
 
+
+def test_present_bill(file_loaded_coffee_shop):
+    #Setup the state
+    coffee_shop = file_loaded_coffee_shop
+
+    #Act
+    coffee_shop.take_orders()
+    name, amount = coffee_shop.present_bill()
+
+    #Expected name?
+
+    #exepcted amount
+    total: float = sum(item.price for item in coffee_shop.order.values())
+    assert name in coffee_shop.people.keys()
+    assert total == amount
+    #Verify the return values and internal state match expected results.
 
 # def test_stuff(loaded_coffee_shop):
 #     loaded_coffee_shop.take_orders()

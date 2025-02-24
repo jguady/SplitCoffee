@@ -34,7 +34,7 @@ class CoffeeShop:
                 menu_data = json.load(menu)
                 self.menu = Menu()
                 self.menu.from_list(menu_data)
-                logging.debug(self.menu)
+                logging.debug(f"Loaded Menu : {self.menu}")
 
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file_path)
@@ -47,7 +47,7 @@ class CoffeeShop:
             with open(file, 'r') as people:
                 people_data = json.load(people)
                 self.people = {person["name"]: Person(person) for person in people_data}
-                logging.debug(self.people)
+                logging.debug(f"Loaded People: {self.people}")
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file)
 
@@ -56,15 +56,16 @@ class CoffeeShop:
     #Loops through each of the people in the coffee shop and collects their order into a list called order
     def take_orders(self) -> None:
         self.order = {name : person.get_order(self.menu) for name, person in self.people.items()}
-        logging.debug(self.order)
+        logging.debug(f"Order: {self.order}")
 
     def present_bill(self) -> (str, float):
         self.split_service.apply_credits(self.order)
+        logging.debug(f"State: {str(self.split_service.split_state)}")
         name = self.split_service.determine_payment_person(self.people, self.order)
         logging.debug(f"Charging : {name}")
         order_total = self.split_service.get_order_total(self.order)
         logging.debug(f"Order Total: {order_total}")
         self.split_service.charge_person(order_total, name)
-        logging.debug(str(self.split_service.split_state))
+        logging.debug(f"Person debt Update: {name}: {self.split_service.split_state[name].debt:.2f}")
         return name, order_total
 
