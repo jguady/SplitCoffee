@@ -38,7 +38,7 @@ Windows can be a bit finnicky to get python programs to run but ideally it shoul
 ```shell
 python .\splitcoffee\runner.py
 ```
-However if this doesn't work then please try setting `PYTHONPATH=.` at the the root of the project (same as this [README.md])
+However if this doesn't work then please try setting `PYTHONPATH=.` at the the root of the project (same as this [README.md](README.md))
 ```shell
 C:\...\splitcoffee-0.0.1> set PYTHONPATH=. 
 ```
@@ -50,17 +50,19 @@ There is a simple CLI that was made for the user to interact with.
 In general there are the following top level commands:
 
 `help` - prints the available commands
+
 `start` - starts the program, loading the people and menu items.
+
 `q` - exits the program
 
-**`start`**:
-	Once the start command has been run. The program will continue to run and take orders each time the `ENTER` key is pressed. Each press of the enter key simulates a day of orders and then determines who to charge. It then charges that person and prompts the user if they would like to continue.
+### **`start` command**
+Once the start command has been run. The program will continue to run and take orders each time the `ENTER` key is pressed. Each press of the enter key simulates a day of orders and then determines who to charge. It then charges that person and prompts the user if they would like to continue.
 
 You can stop the simulation by typing `s` and hitting `enter`.
 
 `q` here will also work but will exit the program entirely. 
 
-  
+---
 ## Manipulate Data  
   
 ### Changing the People  
