@@ -5,10 +5,7 @@ from typing import List
 from splitcoffee.model.MenuItem import MenuItem
 class Menu:
 
-    menu_items: {} = {}
-
-    def __init__(self) -> None:
-        pass
+    menu_items: dict[str,MenuItem] = {}
 
     # Useful if data is in { "name": "Espresso", "price": 2.5 },
     def from_list(self, mi: List):

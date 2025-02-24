@@ -1,5 +1,7 @@
 import random
 
+import pytest
+
 from splitcoffee.model.Person import Person
 
 
@@ -36,13 +38,6 @@ def test_get_order_favorite(persons, menu):
     order = persons["Jay"].get_order(menu)
     assert person.favorite_drink == orders[person.name].name or person.ordered_random
 
-
-
-    # for person in persons.values():
-    #     if person.name == "Michael":  # Known ahead of time that Michael on seed 42 will order randomly
-    #         assert person.ordered_random == True
-    #     else:
-    #         assert (person.favorite_drink == orders[person.name].name or person.ordered_random)
 def test_get_order_random(persons, menu):
     random.seed(42)
     person : Person = persons["Jim"]
@@ -50,3 +45,10 @@ def test_get_order_random(persons, menu):
     order = person.get_order(menu)
     assert person.ordered_random == True
     assert person.favorite_drink != order.name
+
+def test_get_order_no_menu(persons):
+    with pytest.raises(TypeError) as err:
+        order = persons["Jim"].get_order(None)
+    assert "Menu cannot be None" in str(err.value)
+
+

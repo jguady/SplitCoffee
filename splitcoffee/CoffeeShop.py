@@ -15,13 +15,15 @@ class CoffeeShop:
 
     #resources folder constant path
     RESOURCES_PATH = pathlib.Path(__file__).parent / "resources"
-    menu: Menu
+    menu: Menu = None
     people: dict[str, Person]
     order: dict[str, MenuItem] = {}
+    split_service: SplitCoffeeService
 
     def __init__(self):
         logging.info(CoffeeShop.RESOURCES_PATH)
         self.menu = Menu()
+        self.split_service = SplitCoffeeService()
 
 
     # loads the menu items from the menu_items.json
@@ -31,7 +33,8 @@ class CoffeeShop:
             logging.info(f" Menu File exists: Loading menu from {file_path}")
             with open(file_path, 'r') as menu:
                 menu_data = json.load(menu)
-                menu = Menu().from_list(menu_data)
+                self.menu = Menu()
+                self.menu.from_list(menu_data)
                 logging.debug(self.menu)
 
         else:
@@ -44,18 +47,25 @@ class CoffeeShop:
             logging.info(f" People File exists: Loading people data from {file}")
             with open(file, 'r') as people:
                 people_data = json.load(people)
-                self.people = {person.name: Person(person) for person in people_data}
+                self.people = {person["name"]: Person(person) for person in people_data}
                 logging.debug(self.people)
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file)
 
+        self.split_service.initialize_state(list(self.people.keys()))
+
     #Loops through each of the people in the coffee shop and collects their order into a list called order
     def take_orders(self) -> None:
-        self.order = {person.name: person.get_order(self.menu) for person in self.people.values()}
-        print(self.order)
+        self.order = {name : person.get_order(self.menu) for name, person in self.people.items()}
+        logging.debug(self.order)
 
-
-    def present_bill(self):
-        SplitCoffeeService.determine_payment_person(self.people, self.order)
-
+    def present_bill(self) -> (str, float):
+        self.split_service.apply_credits(self.order)
+        name = self.split_service.determine_payment_person(self.people, self.order)
+        logging.debug(f"Charging : {name}")
+        order_total = self.split_service.get_order_total(self.order)
+        logging.debug(f"Order Total: {order_total}")
+        self.split_service.charge_person(order_total, name)
+        logging.debug(str(self.split_service.split_state))
+        return name, order_total
 

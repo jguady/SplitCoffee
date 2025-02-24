@@ -25,7 +25,8 @@ class Person:
         return str(self)
 
     def get_order(self, menu: Menu) -> MenuItem:
-
+        if not menu:
+            raise TypeError("Menu cannot be None")
         # simulate people's ability to not order the same drink every day after lunch
         # random.random generates 0..1 value and consistency rate is also 0..1
         # if the random is greater than the persons will to order the same drink they will order a different drink

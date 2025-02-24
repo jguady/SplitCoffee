@@ -42,7 +42,7 @@ def person_data() -> List:
         {"name": "Michael", "favorite_drink": "Latte", "consistency_rate": 0.85}
     ]
 @pytest.fixture
-def persons(tmp_path, person_data) -> dict[str,Person]:
+def persons(tmp_path, person_data) -> dict[str, Person]:
 
     file_path = tmp_path / "person.json"
     file_path.write_text(json.dumps(person_data))
