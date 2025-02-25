@@ -183,7 +183,7 @@ One line of output in the program might look like the following:
 
 `Jay order=Latte price=$3.75 debt=$0.00 total=$3.75`
  
-This line displays that Jay ordered a Cappuccino, it cost $3.75.
+This line displays that Jay ordered a Latte, it cost $3.75.
  
 Jay's current debt is $0.00 and he will be creddited $3.75 for his order, updating his debt to `($0.00 + $3.75)`
 
