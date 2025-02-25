@@ -51,7 +51,7 @@ More recent editions of the python installation will allow you to only use `pyth
 > 
 > ```
 > python -m venv .venv
-> .\env\Scripts\activate.bat
+> .\.venv\Scripts\activate.bat
 > ```
 > 
 > Linux
