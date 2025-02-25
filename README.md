@@ -13,7 +13,7 @@ Afterwards, it will execute group's first day getting coffee. It does this by pe
 4. If there is a tie, attempt to break it by seeing if one person has paid more recently than another.
 5. *Charge* the person for the sum total of the order. 
 
-**See the [In-Depth Example](https://github.com/jguady/SplitCoffee/edit/main/README.md#in-depth-example) near the bottom for more detailed implementation notes**
+**See the [In-Depth Example](https://github.com/jguady/SplitCoffee?tab=readme-ov-file#in-depth-example) near the bottom for more detailed implementation notes**
 
 ## Assumptions  
 ### The following assumptions were made when creating the program  
