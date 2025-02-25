@@ -49,11 +49,17 @@ More recent editions of the python installation will allow you to only use `pyth
 > 
 > Windows
 > 
-> ```python -m venv .venv```
+> ```
+> python -m venv .venv
+> .\env\Scripts\activate.bat
+> ```
 > 
 > Linux
 > 
-> ```python3 -m venv .venv```
+> ```
+> python3 -m venv .venv
+> source .venv/bin/activate
+> ```
 >
 > You can then pip install the required dependencies (and install pip beforehand if needed)
 > 
