@@ -2,6 +2,19 @@
 
 A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 
+## Overview
+The program will read in the people in the 'people.json' file and the items available to order in the 'menu_items.json'. 
+
+Afterwards, it will execute group's first day getting coffee. It does this by performing the following steps:
+
+1.  Get each person's order based on their favorite drink, or a random one based on their consistency_rate.
+2. Assign a credit to everyone for their order.
+3. Determine who pays by finding the person with the lowest amount of debt.
+4. If there is a tie, attempt to break it by seeing if one person has paid more recently than another.
+5. *Charge* the person for the sum total of the order. 
+
+**See the [In-Depth Example](#In-Depth Example) near the bottom for more detailed implementation notes**
+
 ## Assumptions  
 ### The following assumptions were made when creating the program  
  - The group decides that the fairest way to take turns paying based on an internal score.   
@@ -33,8 +46,9 @@ A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 
 ## Running the Program  
 
-The program was created using Python 3.13 and tested on windows. Pycharm was used to develop the program. 
-Windows can be a bit finnicky to get python programs to run but ideally it should be as easy as:
+The program was created using **Python 3.13** and tested on **Windows 10**. Pycharm was used to develop the program. 
+
+Windows can be a bit finnicky to get python programs to run, but ideally it should be as easy as
 ```shell
 python .\splitcoffee\runner.py
 ```
@@ -42,10 +56,26 @@ However if this doesn't work then please try setting `PYTHONPATH=.` at the the r
 ```shell
 C:\...\splitcoffee-0.0.1> set PYTHONPATH=. 
 ```
-More recent editions of the python installation will allow you to only use `python` or `py` to run the program, however depending on your setup you may need to run `python3` to specify. 
+If it is stil not running take a look at the steps below to determine if the environment is setup correctly and feel free to reach out to me directly.
 
+### Setup of the Environment
+
+Again, if you see this error it is most likely for 2 reasons. 
+1. You are not in the right directory (needs to be in root)
+2. You did not set the `PYTHONPATH` correctly. 
+```shell
+Traceback (most recent call last):
+  File "H:\...\SplitCoffee\splitcoffee\runner.py", line 4, in <module>
+    from splitcoffee.cli import main
+ModuleNotFoundError: No module named 'splitcoffee'
+```
+More recent editions of the python installation will allow you to use `python` or `py`, as an alias for `python3`, to run the program, however depending on your setup you may need to run `python3`. So you could also try 
+```shell
+python3 .\splitcoffee\runner.py
+```
+#### Python Virtual Environment (venv)
 > [!Warning] 
-> I'm less familiar with Python's venv and on linux. However I believe these are the commands that would allow you to setup a virtual environment
+> I'm less familiar with Python's venv but managed to get it working on Windows with the instructions below. I not test on linux but have provided instructions below that should work to set this up on linux.
 > 
 > Windows
 > 
@@ -77,25 +107,29 @@ More recent editions of the python installation will allow you to only use `pyth
 > pip install -r requirements.txt
 > ```
 
-Additionally, you can start the program with a `-v` to turn on DEBUG logging. 
-
 ## Interacting with the Program
 
-There is a simple CLI that was made for the user to interact with. 
-In general there are the following top level commands:
+There is a simple CLI that was made for the user to interact with.
+### Program Arguments
+Prior to running the program you can see the available options using program arguments
 
-`help` - prints the available commands
+**Print help text**
 
-`start` - starts the program, loading the people and menu items.
+`-h` , `--help`
 
-`q` - exits the program
+**Turn on debug logging**
 
-### **`start` command**
-Once the start command has been run. The program will continue to run and take orders each time the `ENTER` key is pressed. Each press of the enter key simulates a day of orders and then determines who to charge. It then charges that person and prompts the user if they would like to continue.
+`-v`, `--verbose`
 
-`s` to stop .
 
-`q` here will also work but will exit the program entirely. 
+The program will immediately start executing the first order of the first day.
+Once the first order is finished it will wait for the user to hit Enter to proceed. 
+
+During this pause you can enter the following:
+
+`q` - to exit the program
+
+For an explination of the data you see each day and the way the program works see the [Overview](#Overview)
 
 ---
 ## Manipulate Data  
@@ -134,3 +168,18 @@ Under the `.github/workflows` directory there is a file [build.yml] which simply
 It then uploads the artifact to github.
 
 
+## In-Depth Example
+
+> [!Example]
+> `Bob order=Cappuccino price=$3.75 debt=$0.00 total=$3.75`
+> This line displays that Bob ordered a Cappuccino, it cost $3.75. Bob's current debt is $0.00 and he will be creddited $3.75 for his order, updating his debt to `($0.00 + $3.75)`
+>
+> At the end it will display a line for who is charged.
+> 
+> `Jay paid $20.50 for coffee today.`
+>
+> On the next day you'll see the line with Jay as
+> 
+> `Jay order=Mocha price=$4.10 debt=$-16.75 total=$-12.65`
+>
+> This shows that Jay ordered a Mocha costing `$4.10`, his debt is `$-16.75`. He will be creddited `$4.10` for his order, updating his debt to  `($-16.75 + $4.10) = $-12.65` 

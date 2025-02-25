@@ -8,9 +8,6 @@ from splitcoffee.CoffeeShop import CoffeeShop
 def main(args, loglevel):
     logging.basicConfig(format="%(levelname)s: %(message)s", level=loglevel)
 
-    """
-    Main Entry Point of the application
-    """
     ## Main Loop ##
     coffeeshop = CoffeeShop()
 
