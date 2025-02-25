@@ -179,16 +179,20 @@ It then uploads the artifact to github.
 
 ## In-Depth Example
 
-> [!Example]
-> `Bob order=Cappuccino price=$3.75 debt=$0.00 total=$3.75`
-> This line displays that Bob ordered a Cappuccino, it cost $3.75. Bob's current debt is $0.00 and he will be creddited $3.75 for his order, updating his debt to `($0.00 + $3.75)`
->
-> At the end it will display a line for who is charged.
-> 
-> `Jay paid $20.50 for coffee today.`
->
-> On the next day you'll see the line with Jay as
-> 
-> `Jay order=Mocha price=$4.10 debt=$-16.75 total=$-12.65`
->
-> This shows that Jay ordered a Mocha costing `$4.10`, his debt is `$-16.75`. He will be creddited `$4.10` for his order, updating his debt to  `($-16.75 + $4.10) = $-12.65` 
+One line of output in the program might look like the following: 
+
+`Jay order=Latte price=$3.75 debt=$0.00 total=$3.75`
+ 
+This line displays that Jay ordered a Cappuccino, it cost $3.75.
+ 
+Jay's current debt is $0.00 and he will be creddited $3.75 for his order, updating his debt to `($0.00 + $3.75)`
+
+At the end it will display a line for who is charged.
+ 
+`Jay paid $20.50 for coffee today.`
+
+On the next day you'll see the line with Jay as
+ 
+`Jay order=Mocha price=$4.10 debt=$-16.75 total=$-12.65`
+
+ This shows that Jay ordered a Mocha costing `$4.10`, his debt is `$-16.75`. He will be creddited `$4.10` for his order, updating his debt to  `($-16.75 + $4.10) = $-12.65` 
