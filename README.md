@@ -54,10 +54,16 @@ Windows can be a bit finnicky to get python programs to run, but ideally it shou
 python .\splitcoffee\runner.py
 ```
 However if this doesn't work then please try setting `PYTHONPATH=.` at the the root of the project (same as this [README.md](https://github.com/jguady/SplitCoffee/edit/main/README.md))
+
+**Windows**
 ```shell
 C:\...\splitcoffee-0.0.1> set PYTHONPATH=. 
 ```
-If it is stil not running take a look at the steps below to determine if the environment is setup correctly and feel free to reach out to me directly.
+**Linux**
+```
+$> export PYTHONPATH=.
+```
+If it is still not running take a look at the steps below to determine if the environment is setup correctly and feel free to reach out to me directly.
 
 ### Setup of the Environment
 
