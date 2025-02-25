@@ -3,7 +3,7 @@
 A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 
 ## Overview
-The program will read in the people in the 'people.json' file and the items available to order in the 'menu_items.json'. 
+The program will read in the people in the `people.json` file and the items available to order in the `menu_items.json`. 
 
 Afterwards, it will execute group's first day getting coffee. It does this by performing the following steps:
 
@@ -13,7 +13,7 @@ Afterwards, it will execute group's first day getting coffee. It does this by pe
 4. If there is a tie, attempt to break it by seeing if one person has paid more recently than another.
 5. *Charge* the person for the sum total of the order. 
 
-**See the [In-Depth Example](#In-Depth Example) near the bottom for more detailed implementation notes**
+**See the [In-Depth Example](https://github.com/jguady/SplitCoffee/edit/main/README.md#in-depth-example) near the bottom for more detailed implementation notes**
 
 ## Assumptions  
 ### The following assumptions were made when creating the program  
@@ -24,12 +24,12 @@ Afterwards, it will execute group's first day getting coffee. It does this by pe
    - Since this is just a proof of concept and reduce complexity a database was not stood up.    
      - Either a SQL or No-SQL db would be appropriate for the data being managed by the application.   
  - People will always order something that is actually on the menu.   
-   - If their favorite drink is on the menu they have a *chance* to order it see: [Person.py](splitcoffee/model/Person.py)  
+   - If their favorite drink is on the menu they have a *chance* to order it see: [Person.py](https://github.com/jguady/SplitCoffee/blob/08c083fd646b6684eb441e10b049bbf29ff3fbfe/splitcoffee/model/Person.py#L30-L33)
  - Prices of menu items stay the same over time
    - The program could be enhanced to modify prices at runtime.
  - Each person only has 1 favorite
-   - Jim only likes Drip coffee, not all non-dairy based drinks which could be considered "Black". 
-- Not everyone orders the same drink every day
+   - Jim only likes drip coffee since he likes his coffee "Black".
+- Not everyone orders the same drink every day.
   - Exceptions to this are Bob and Jim:
     - Bob always orders a Cappuccino according to the requirements doc.
     - Jim always orders drip coffee (see previous assumption about "Black" coffee)
@@ -40,8 +40,9 @@ Afterwards, it will execute group's first day getting coffee. It does this by pe
 	- This would also cause huge fluctuations in peoples personal finances to whomever had to pay that day. 
 	- More sophisticated tracking/datetime logic could be added in the future. 
 - Only people who are present and give an order are considered for being charged.
+	- It currently not possible to modify the set of people at runtime, but the program would support it if it were.  
 - No Docstrings provided. This is a common python practice but will not be available until future releases. 
-- The people and menu files are properly formatted and contain at least one element fitting the model.
+- The people and menu files are properly formatted and contain at least one element fitting the model when the program is run.
 
 
 ## Running the Program  
@@ -52,7 +53,7 @@ Windows can be a bit finnicky to get python programs to run, but ideally it shou
 ```shell
 python .\splitcoffee\runner.py
 ```
-However if this doesn't work then please try setting `PYTHONPATH=.` at the the root of the project (same as this [README.md](README.md))
+However if this doesn't work then please try setting `PYTHONPATH=.` at the the root of the project (same as this [README.md](https://github.com/jguady/SplitCoffee/edit/main/README.md))
 ```shell
 C:\...\splitcoffee-0.0.1> set PYTHONPATH=. 
 ```
@@ -129,20 +130,22 @@ During this pause you can enter the following:
 
 `q` - to exit the program
 
-For an explination of the data you see each day and the way the program works see the [Overview](#Overview)
+For an explination of the data you see each day and the way the program works see the [Overview](https://github.com/jguady/SplitCoffee/edit/main/README.md#overview)
 
 ---
 ## Manipulate Data  
   
 ### Changing the People  
 You can modify the json file of people before running the program to add/remove people or adjust their parameters  
-[people.json](splitcoffee/resources/people.json)  
-[https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/people.json  ](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/people.json#L1-L9)
+[people.json](splitcoffee/resources/people.json)
+
+[people.json](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/people.json#L1-L9)
   
 ### Changing the Menu  
 The menu items json can also be adjusted to modify prices or add/remove drinks.  
-[menu_items.json](splitcoffee/resources/menu_items.json)  
-[https://github.com/jguady/SplitCoffee/blob/db334948995624a5f57f4e2af5f5a5539ec87944/splitcoffee/resources/menu_items.json](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/menu_items.json#L1-L7)
+[menu_items.json](splitcoffee/resources/menu_items.json)
+
+[menu_items.json](https://github.com/jguady/SplitCoffee/blob/cd4814149518daaad4e6cec2f2c8e35b727de0aa/splitcoffee/resources/menu_items.json#L1-L7)
 
 ## Tests  
 Under the tests folder are all the unit tests written for the program.
