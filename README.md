@@ -156,7 +156,7 @@ The menu items json can also be adjusted to modify prices or add/remove drinks.
 ## Tests  
 Under the tests folder are all the unit tests written for the program.
 
-The `PYTHONPATH` also needs to be set here as well (see above)
+The `PYTHONPATH` also needs to be set here as well (see [above](https://github.com/jguady/SplitCoffee/blob/main/README.md#running-the-program))
 
 If so the tests should be runnable with from the root project directory.
 ```shell
