@@ -33,7 +33,7 @@ A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 
 ## Running the Program  
 
-The program was created and tested on windows. Pycharm was used to develop the program. 
+The program was created using Python 3.13 and tested on windows. Pycharm was used to develop the program. 
 Windows can be a bit finnicky to get python programs to run but ideally it should be as easy as:
 ```shell
 python .\splitcoffee\runner.py
@@ -42,7 +42,36 @@ However if this doesn't work then please try setting `PYTHONPATH=.` at the the r
 ```shell
 C:\...\splitcoffee-0.0.1> set PYTHONPATH=. 
 ```
+More recent editions of the python installation will allow you to only use `python` or `py` to run the program, however depending on your setup you may need to run `python3` to specify. 
 
+> [!Warning] 
+> I'm less familiar with Python's venv and on linux. However I believe these are the commands that would allow you to setup a virtual environment
+> 
+> Windows
+> 
+> ```python -m venv .venv```
+> 
+> Linux
+> 
+> ```python3 -m venv .venv```
+>
+> You can then pip install the required dependencies (and install pip beforehand if needed)
+> 
+> Windows
+> 
+> ```shell
+> pip install -U pip setuptools wheel
+> pip install -r requirements.txt
+> ```
+>
+> Linux
+> 
+> ```
+> pip install -U pip setuptools wheel
+> pip install -r requirements.txt
+> ```
+
+Additionally, you can start the program with a `-v` to turn on DEBUG logging. 
 
 ## Interacting with the Program
 
@@ -58,7 +87,7 @@ In general there are the following top level commands:
 ### **`start` command**
 Once the start command has been run. The program will continue to run and take orders each time the `ENTER` key is pressed. Each press of the enter key simulates a day of orders and then determines who to charge. It then charges that person and prompts the user if they would like to continue.
 
-You can stop the simulation by typing `s` and hitting `enter`.
+`s` to stop .
 
 `q` here will also work but will exit the program entirely. 
 
