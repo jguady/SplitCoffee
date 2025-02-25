@@ -86,14 +86,12 @@ def test_take_orders(persons, menu):
 
 
 def test_present_bill(file_loaded_coffee_shop):
-    #Setup the state
+    # Set up the state
     coffee_shop = file_loaded_coffee_shop
 
     #Act
     coffee_shop.take_orders()
     name, amount = coffee_shop.present_bill()
-
-    #Expected name?
 
     #exepcted amount
     total: float = sum(item.price for item in coffee_shop.order.values())
@@ -101,36 +99,3 @@ def test_present_bill(file_loaded_coffee_shop):
     assert total == amount
     #Verify the return values and internal state match expected results.
 
-# def test_stuff(loaded_coffee_shop):
-#     loaded_coffee_shop.take_orders()
-#     assert loaded_coffee_shop.order is not []
-#     assert type(loaded_coffee_shop.order) == dict
-#     orders_a = loaded_coffee_shop.order
-#
-#
-#
-#     print()
-#     print(orders_a)
-#     order_list_a = [(key, orders_a[key].price) for key in orders_a]
-#     print(order_list_a)
-#     print(order_list_a[1])
-#
-#     loaded_coffee_shop.take_orders()
-#     orders_b = loaded_coffee_shop.order
-#
-#     assert orders_a != orders_b
-#     print()
-#     print(orders_b)
-#     order_list_b = [(key, orders_b[key].price) for key in orders_b]
-#     print(order_list_b)
-#     print(order_list_b[1])
-#
-#     print(list(map(lambda x,y: x[1]+y[1], order_list_a, order_list_b)))
-
-
-
-
-
-
-
-# build a dict of Names: MenuItems to make an order

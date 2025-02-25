@@ -54,15 +54,3 @@ class SplitCoffeeService:
     def initialize_state(self, people: List[str]):
         self.split_state = {name : SplitCoffeeState(name) for name in people}
 
-# if the state is name: price
-# for item in orders get order key and order item.price
-# get state[key] += item.price
-# Tracking Highest...
-# if previous_highest == state[key] ## Tie case
-# if previous_highest < state[key] then state[key] is new highest
-# if previous_highest > state[key] nothing happens.
-
-# algorithms_availablea
-# async algorithms_availablea
-# async algorithms_availablea
-# async a

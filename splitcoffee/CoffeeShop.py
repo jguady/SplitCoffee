@@ -35,7 +35,6 @@ class CoffeeShop:
                 self.menu = Menu()
                 self.menu.from_list(menu_data)
                 logging.debug(f"Loaded Menu : {self.menu}")
-
         else:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file_path)
         if not self.menu.menu_items:

@@ -219,11 +219,6 @@ def test__update_state():
     assert service.split_state["Bob"].debt == -13.50
     assert service.split_state["Amanda"].debt == 7.5
 
-    # {'Bob': MenuItem(name=Espresso, price=2.5), 'Jim': MenuItem(name=Latte, price=3.75),
-    #  'Alice': MenuItem(name=Mocha, price=4.1), 'Jay': MenuItem(name=Mocha, price=4.1),
-    #  'Steve': MenuItem(name=Drip, price=1.5), 'Sarah': MenuItem(name=Espresso, price=2.5),
-    #  'Michael': MenuItem(name=Latte, price=3.75)}
-
 def test_initialize_state(persons):
     service = SplitCoffeeService()
     service.initialize_state(list(persons.keys()))

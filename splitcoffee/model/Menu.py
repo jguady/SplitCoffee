@@ -10,8 +10,6 @@ class Menu:
 
     # Useful if data is in { "name": "Espresso", "price": 2.5 },
     def from_list(self, mi: List):
-        # for menu_item in mi:
-        #     self.menu_items[menu_item["name"]] = menu_item
         self.menu_items = {menu_item["name"] : MenuItem(**menu_item) for menu_item in mi}
 
     # Useful if data is in "Espresso": { "price": 2.5 } format
@@ -24,7 +22,3 @@ class Menu:
     def __getitem__(self, item):
         return self.menu_items[item]
 
-
-#     #Person(name={self.name}
-#     def __repr__(self):
-#         return str(self)
