@@ -6,7 +6,7 @@ A simple CLI app to determine who's turn it is to pay for coffee during lunch.
 ### The following assumptions were made when creating the program  
  - The group decides that the fairest way to take turns paying based on an internal score.   
    - This score is made up of previous purchase history.
-   - If there is a tie then the person who paid hasn't paid in the longest time pays.
+   - If there is a tie, then the person who hasn't paid in the longest time pays.
  - Items are only recorded in memory and not recalled in between runs.  
    - Since this is just a proof of concept and reduce complexity a database was not stood up.    
      - Either a SQL or No-SQL db would be appropriate for the data being managed by the application.   
